@@ -17,86 +17,98 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-main {
-    position: relative;
-    height: 100%;
-    width: 100%;
     background-color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
-
 }
 
-main>p {
-    /* text-align: center; */
-
-    opacity: 0.7;
+.para {
+    line-height: 500px;
     position: absolute;
-    color: rgba(177, 8, 8, 0);
     z-index: 0;
-    font-size: 500px;
-    -webkit-text-stroke: .8px rgb(255, 255, 255);
-    background: radial-gradient(50px, rgba(233, 38, 38, 0), rgb(2, 36, 24));
+    font-size: 550px;
+    text-align: center;
+    /* text outline */
+    -webkit-text-stroke: 5px rgba(255, 255, 255, 0);
 
+    /* apply conic gradient to text */
+    background: conic-gradient(from var(--circles),
+            rgb(0, 0, 0) 25%,
+            rgb(5, 223, 147) 50%,
+            rgb(0, 0, 0) 25%);
 
+    -webkit-background-clip: text;
+    animation: animateCircle 4s linear infinite;
+    /* display: none; */
 }
 
 .box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    overflow: hidden;
     height: 600px;
     width: 350px;
-    background-color: rgb(2, 36, 24);
     border-radius: 20px;
-    padding: 7px;
-    box-shadow: 0px 0px 250px 20px rgba(5, 143, 94, 0.792);
-    animation: animateCircle 4s linear infinite;
+    padding: 0px;
+    box-shadow: 0px 0px 0px 0px rgba(5, 143, 94, 0.792);
+    animation: animateCircle 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
     background:
-        conic-gradient(from var(--circles), rgb(2, 36, 24), rgb(2, 36, 24), rgb(5, 223, 147), rgb(5, 223, 147), rgb(2, 36, 24), rgb(2, 36, 24)) padding-box;
-    position: relative;
+        linear-gradient(rgb(2, 38, 25)) padding-box,
+        conic-gradient(from var(--circles), rgb(2, 36, 24), rgb(2, 36, 24), rgb(5, 223, 147), rgb(2, 36, 24), rgb(2, 36, 24)) border-box;
+    z-index: 1;
+    border: 0px solid rgba(2, 38, 25, 0);
+    transition: all .4s ease-in-out;
+    border-width: 0px;
 }
 
-.inner {
-    background: rgb(2, 36, 24);
-    height: 100%;
-    width: 100%;
-    padding: 10px;
-    border-radius: 15px;
+.box:hover {
+    box-shadow: 0px 0px 300px 20px rgba(5, 143, 94, 0.792);
+    border-width: 5px;
+    padding: 8px;
+}
+
+.box:hover .para {
+    /* display: block; */
 
 }
 
-.inner>img {
+
+
+.box>img {
     width: 100%;
     height: 50%;
-    border-radius: 10px;
+    border-radius: 11px;
     object-fit: cover;
     object-position: center;
     border-bottom: 1px solid rgb(5, 223, 147);
     border-top: 1px solid rgb(5, 223, 147);
 }
 
-.inner p,
-.inner h2 {
+.box p,
+.box h2 {
     text-align: center;
     font-weight: 200;
-    padding: 10px;
+
 }
 
-.inner h2 {
+.box h2 {
+    padding-top: 20px;
     font-size: 40px;
     color: rgb(5, 223, 147);
     text-shadow: 0px 0px 20px rgba(5, 223, 147, 0.563);
 }
 
-.inner p {
+.box p {
     -webkit-text-stroke: .25px rgb(255, 255, 255);
     text-shadow: 0px 0px 20px rgba(5, 223, 147, 0.24);
-    /* text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.382); */
     font-weight: 100;
     font-size: 18px;
     text-align: justify;
+    padding: 20px 10px;
 }
 
 @property --circles {
